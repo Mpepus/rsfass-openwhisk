@@ -7,27 +7,30 @@ services:
           -  /home/ubuntustage/Desktop/rsfaas/Inputs_Faas:/Inputs_Faas
           -  /home/ubuntustage/Desktop/rsfaas/Outputs_Faas:/Outputs_Faas
         command:
-        
+
+    aes_decrypt: 
+        images: aes_decrypt
+        volumes: 
+          -  /home/ubuntustage/Desktop/rsfaas/Outputs_Faas:/Outputs_Faas
+
     hash:
         images: hash
         volumes:
           -  /home/ubuntustage/Desktop/rsfaas/Inputs_Faas:/Inputs_Faas
           -  /home/ubuntustage/Desktop/rsfaas/Outputs_Faas:/Outputs_Faas
-        command:
-        
-    aes_decrypt: 
-        images: aes_decrypt
-        volumes: 
-          -  /home/ubuntustage/Desktop/rsfaas/Outputs_Faas:/Outputs_Faas
         depends_on:
-            hash:
+            aes_decrypt:
+              condition: service_completed_successfully
+        
+    actions_create:
+        images: actions_create
+        depends_on:
+            aes_decrypt:
               condition: service_completed_successfully
     
-    actions_executed:
-        images: actions_executed
-        volumes: 
-          -  /home/ubuntustage/Desktop/rsfaas/Outputs_Faas:/Outputs_Faas
+    actions_invoke:
+        images: actions_invoke
         depends_on:
-            hash:
+            actions_create:
               condition: service_completed_successfully
    

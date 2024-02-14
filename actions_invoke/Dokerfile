@@ -1,0 +1,11 @@
+#utilisation de python comme image de base
+FROM python:3.10.12
+
+#Definition du repertoire de travail
+WORKDIR /app
+
+#copie du script du chiffrement AES
+COPY actions_invoke.py /app
+
+#commande pour lancer le script
+CMD ["python", "actions_invoke.py"]

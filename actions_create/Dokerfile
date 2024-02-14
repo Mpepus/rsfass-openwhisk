@@ -1,5 +1,11 @@
-FROM ubuntu:lastest
+#utilisation de python comme image de base
+FROM python:3.10.12
 
-#Installation des dépendances
-RUN apt-get update && apt install -y nodejs npm python3 default-jdk
-RUN apt install snapd -y && snap install gradle --classic
+#Definition du repertoire de travail
+WORKDIR /app
+
+#copie du script du chiffrement AES
+COPY actions_create.py /app
+
+#commande pour lancer le script
+CMD ["python", "actions_create.py"]

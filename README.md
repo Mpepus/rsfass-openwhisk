@@ -13,6 +13,7 @@ Ce projet porte sur la création et l'éxécution sécurisé des fonctions (acti
 - Installer **Openwhisk** via [Installation apache openwhisk](https://github.com/apache/openwhisk)
 - Une fois Openwhisk installé, configuré l'utilisation de **Openwhisk command line** appelée **wsk**
 - Une fois que tout est fait lancé l'exécution de Openwhisk dans un terminal **sudo ./gradlew core:standalone:bootRun**
+- Puis cloner enfin ce repository 
 
 ## Architecture de notre solution
 ![Architecture](./media/architecture.JPG)
