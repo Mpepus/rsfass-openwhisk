@@ -1,0 +1,14 @@
+#utilisation de python comme image de base
+FROM python:3.10.12
+
+#Definition du repertoire de travail
+WORKDIR /app
+
+#copie du script du chiffrement AES
+COPY aes_encrypt.py /app
+
+#installation des dépendances
+RUN pip install cryptography
+
+#commande pour lancer le script
+CMD ["python", "aes_encrypt.py"]

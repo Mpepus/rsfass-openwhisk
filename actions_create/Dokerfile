@@ -1,0 +1,5 @@
+FROM ubuntu:lastest
+
+#Installation des dépendances
+RUN apt-get update && apt install -y nodejs npm python3 default-jdk
+RUN apt install snapd -y && snap install gradle --classic

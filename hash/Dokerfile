@@ -1,0 +1,14 @@
+#utilisation de python comme image de base
+FROM python:3.10.12
+
+#Definition du repertoire de travail
+WORKDIR /app
+
+#copie du script du chiffrement AES
+COPY hash.py /app
+
+#installation des dépendances
+RUN pip install hashlib
+
+#commande pour lancer le script
+CMD ["python", "hash.py"]
